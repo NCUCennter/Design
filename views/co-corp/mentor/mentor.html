@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
 </head>
 <body>
-    <button type="button" class="btn btn-primary btn-lg pull-right">ADD+</button>
+    <button type="button" class="btn btn-primary btn-lg pull-right" ng-click="goAdd()">ADD+</button>
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
@@ -82,7 +82,7 @@
                                     <td>{{ person.mR_Date }}</td>
                                     <td>{{ person.mR_Man }}</td>
                                     <td>{{ person.mR_Del }}</td>
-                                    <td><a ng-click="goEdit()"><i class="fa fa-paste"></i></a></td>
+                                    <td><a ng-click="goEDIT()"><i class="fa fa-paste" ></i></a></td>
                                     <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
                                 </tr>
                             </tbody>

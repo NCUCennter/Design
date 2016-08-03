@@ -1,4 +1,4 @@
-﻿function mentorController($scope) {
+﻿function mentorController($scope, $state) {
 
 
     $scope.Fname = "";
@@ -56,23 +56,30 @@
             mR_Del: 'FALSE'
         }
     ];
-    //$scope.goAdd = function () {
-    //    $state.go('');
-    //}
+
+    $scope.goEDIT = function () {
+        $state.go('cc.mentor-editmentor');
+    }
 
     $scope.Filter = new Object();
 
-    console.log($scope.mentor);
+    $scope.goAdd = function () {
+        $state.go('cc.mentor-addmentor');
+    }
 }
 
-function mentorAddCrontroller($scope) {
+function mentorAddController($scope) {
+    console.log('mentorAddController');
 }
 
-function mentorEditCrontroller($scope) {
+function mentorEditController($scope) {
+    console.log('mentorEditController');
 }
 
 
 angular
     .module('inspinia')
-    .controller('mentorController', mentorController);
+    .controller('mentorController', mentorController)
+    .controller('mentorAddController', mentorAddController)
+    .controller('mentorEditController', mentorEditController);
 
