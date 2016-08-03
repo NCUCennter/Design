@@ -72,7 +72,18 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                })
 
 
+        // .state('cc.mentor-addmentor', {
+        //     url: "/mentor/addpage",
+        //     templateUrl: "views/co-corp/mentor/mentor-addmentor.html",
+        //     controller: mentorAddController,
+        // })
 
+
+        //.state('cc.mentor-editmentor', {
+        //    url: "/mentor/edit",
+        //    templateUrl: "views/co-corp/mentor/mentor-editmentor.html",
+        //    controller: mentorEditController,
+        //})
 
 
 

@@ -1,4 +1,5 @@
 ﻿function mentorController($scope) {
+    $scope.m.mentor = "";
     $scope.mentor = [
     {
         mR_ID: '2558001',
@@ -47,6 +48,12 @@
             mR_Del: 'FALSE'
         }
     ];
+    //$scope.goAdd = function () {
+    //    $state.go('');
+    //}
+
+    $scope.Filter = new Object();
+
     console.log($scope.mentor);
 }
 
