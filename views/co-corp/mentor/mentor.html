@@ -12,21 +12,27 @@
                 <div class="ibox-content">
                     <div class="form-group">
                         <div class="row">
-                            <label class="col-sm-2 control-label">ค้นหาตามชื่อ</label>
-                            <div class="col-md-2">
-                                <input type="text" placeholder=""
-                                       class="form-control"
-                                       id="filter">
-                            </div>
                             <label class="col-sm-2 control-label">ค้นหาตามเลขประจำตัวประชาชน</label>
                             <div class="col-md-2">
                                 <input type="text" placeholder=""
-                                       class="form-control">
+                                       class="form-control" ng-model="M_ID">
                             </div>
-                            <label class="col-sm-2 control-label">Column sizing</label>
+                            <label class="col-sm-2 control-label">ค้นหาตามชื่อ</label>
                             <div class="col-md-2">
                                 <input type="text" placeholder=""
-                                       class="form-control">
+                                       class="form-control" ng-model="Fname">   
+                            </div>
+
+                            <label class="col-sm-2 control-label">ค้นหาตามชื่อกลาง</label>
+                            <div class="col-md-2">
+                                <input type="text" placeholder=""
+                                       class="form-control" ng-model="Mname">
+                            </div>
+
+                            <label class="col-sm-2 control-label">ค้นหาตามนามสกุล</label>
+                            <div class="col-md-2">
+                                <input type="text" placeholder=""
+                                       class="form-control" ng-model="Lname">
                             </div>
                         </div>
                     </div>
@@ -63,7 +69,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="person in mentor | filter {mR_Fname:m.mR_Fname}">
+                                <tr ng-repeat="person in mentor | filter: {mR_ID:M_ID, mR_Fname: Fname, mR_Mname: Mname, mR_Lname: Lname }    ">
 
                                     <td>{{ person.mR_ID }}</td>
                                     <td>{{ person.mR_Fname }}</td>

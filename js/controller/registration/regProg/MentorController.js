@@ -1,5 +1,13 @@
 ﻿function mentorController($scope) {
-    $scope.m.mentor = "";
+
+
+    $scope.Fname = "";
+    $scope.Mname = "";
+    $scope.Lname = "";
+    $scope.M_ID = "";
+
+
+
     $scope.mentor = [
     {
         mR_ID: '2558001',
