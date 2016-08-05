@@ -11,7 +11,7 @@
     $scope.mentor = [
     {
         mR_ID: '2558001',
-        mR_CODE: '2568945785621',
+        mR_Code: '2568945785621',
         tN_ID: '1',
         mR_Fname: 'นิภาดา',
         mR_Mname: 'อิน',
@@ -26,7 +26,7 @@
     },
     {
         mR_ID: '2558002',
-        mR_CODE: '123456456',
+        mR_Code: '123456456',
         tN_ID: '2',
         mR_Fname: 'อะไร',
         mR_Mname: 'อะ',
@@ -42,11 +42,11 @@
 
         {
             mR_ID: '2558003',
-            mR_CODE: '545613124',
+            mR_Code: '545613124',
             tN_ID: '3',
-            mR_Fname: 'ทดสอบ',
-            mR_Mname: 'เทส',
-            mR_Lname: 'เทสเทส',
+            mR_FName: 'ทดสอบ',
+            mR_MName: 'เทส',
+            mR_LName: 'เทสเทส',
             hA_ID: '55114564',
             mR_HomeTel: '095-5451231213',
             mR_Mobile: '011-456451324',
@@ -70,6 +70,42 @@
 
 function mentorAddController($scope) {
     console.log('mentorAddController');
+
+    $scope.additemmentor = function () {
+        $scope.mentor.push({
+            mR_ID: '',
+            mR_CODE: '',
+            tN_ID: '',
+            mR_Fname: '',
+            mR_Mname: '',
+            mR_Lname: '',
+            hA_ID: '',
+            mR_HomeTel: '',
+            mR_Mobile: '',
+            mR_Email: '',
+            mR_Date: '',
+            mR_Man: '',
+            mR_Del: ''
+        })
+    }
+    $scope.mentor = [
+{
+    mR_ID: '2558001',
+    mR_Code: '2568945785621',
+    tN_ID: '1',
+    mR_FName: 'นิภาดา',
+    mR_MName: 'อิน',
+    mR_LName: 'ทรอินทร์',
+    hA_ID: '12556585965',
+    mR_HomeTel: '022-2525555',
+    mR_Mobile: '090-12525555',
+    mR_Email: 'aton@outlook.co.th',
+    mR_Date: '07-06-58 9:38',
+    mR_Man: 'myboss',
+    mR_Del: 'TRUE'
+}];
+
+
 }
 
 function mentorEditController($scope) {

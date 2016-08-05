@@ -17,17 +17,14 @@
                 </div>
                 <div class="ibox-content">
                     <form method="get" class="form-horizontal">
-                        <div class="form-group">
-                            <label class="col-sm-1 control-label">รหัสผู้แนะนำ</label>
-                            <div class="col-sm-6"><input type="text" class="form-control"></div>
-                        </div>
+                 
 
 
                         <div class="form-group">
                             <label class="col-sm-1 control-label">เลขประจำตัวประชาชน</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" ng-model="mentor.mR_CODE">
                             </div>
                         </div>
 
@@ -35,7 +32,7 @@
                             <label class="col-sm-1 control-label">รหัสชื่อนำ</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" ng-model="mentor.tN_ID">
                             </div>
                         </div>
 
@@ -43,7 +40,7 @@
                             <label class="col-sm-1 control-label">ชื่อ</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" ng-model="mentor.mR_Fname">
                             </div>
                         </div>
 
@@ -51,7 +48,7 @@
                             <label class="col-sm-1 control-label">ชื่อกลาง</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" ng-model="mentor.mR_Mname">
                             </div>
                         </div>
 
@@ -59,7 +56,7 @@
                             <label class="col-sm-1 control-label">นามสกุล</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" ng-model="mentor.mR_Lname">
                             </div>
                         </div>
 
@@ -67,7 +64,7 @@
                             <label class="col-sm-1 control-label">รหัสบ้าน</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" ng-model="mentor.hA_ID">
                             </div>
                         </div>
 
@@ -75,7 +72,7 @@
                             <label class="col-sm-1 control-label">เบอร์โทรศัพท์บ้าน</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" ng-model="mentor.mR_HomeTel">
                             </div>
                         </div>
 
@@ -83,7 +80,7 @@
                             <label class="col-sm-1 control-label">เบอร์โทรศัพท์บส่วนตัว</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" ng-model="mentor.mR_mobile">
                             </div>
                         </div>
 
@@ -91,7 +88,7 @@
                             <label class="col-sm-1 control-label">อีเมลล์</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" ng-model="mentor.mR_Email">
                             </div>
                         </div>
 
@@ -99,7 +96,7 @@
                             <label class="col-sm-1 control-label">วันสร้าง</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" ng-model="mentor.mR_Date">
                             </div>
                         </div>
 
@@ -107,7 +104,7 @@
                             <label class="col-sm-1 control-label">ผู้สร้าง</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" ng-model="mentor.mR_Man">
                             </div>
                         </div>
 
@@ -115,7 +112,7 @@
                             <label class="col-sm-1 control-label">สถานะการใช้งาน</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" ng-model="mentor.mR_Del">
                             </div>
                         </div>
   
@@ -124,7 +121,7 @@
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">
                                 <button class="btn btn-white" type="submit">Cancel</button>
-                                <button class="btn btn-primary" type="submit">Save changes</button>
+                                <button class="btn btn-primary" type="submit" ng-click="additemmentor()">Save changes</button>
                             </div>
                         </div>
                     </form>
