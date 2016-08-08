@@ -44,9 +44,9 @@
             mR_ID: '2558003',
             mR_Code: '545613124',
             tN_ID: '3',
-            mR_FName: 'ทดสอบ',
-            mR_MName: 'เทส',
-            mR_LName: 'เทสเทส',
+            mR_Fname: 'ทดสอบ',
+            mR_Mname: 'เทส',
+            mR_Lname: 'เทสเทส',
             hA_ID: '55114564',
             mR_HomeTel: '095-5451231213',
             mR_Mobile: '011-456451324',
@@ -70,46 +70,25 @@
 
 function mentorAddController($scope) {
     console.log('mentorAddController');
-
+    $scope.mentor = [];
     $scope.additemmentor = function () {
-        $scope.mentor.push({
-            mR_ID: '',
-            mR_CODE: '',
-            tN_ID: '',
-            mR_Fname: '',
-            mR_Mname: '',
-            mR_Lname: '',
-            hA_ID: '',
-            mR_HomeTel: '',
-            mR_Mobile: '',
-            mR_Email: '',
-            mR_Date: '',
-            mR_Man: '',
-            mR_Del: ''
-        })
+        var input = $scope.mentor;
+        console.log('mentor');
+        //var success = $state.go('');
+        //var bad = toaster;
     }
-    $scope.mentor = [
-{
-    mR_ID: '2558001',
-    mR_Code: '2568945785621',
-    tN_ID: '1',
-    mR_FName: 'นิภาดา',
-    mR_MName: 'อิน',
-    mR_LName: 'ทรอินทร์',
-    hA_ID: '12556585965',
-    mR_HomeTel: '022-2525555',
-    mR_Mobile: '090-12525555',
-    mR_Email: 'aton@outlook.co.th',
-    mR_Date: '07-06-58 9:38',
-    mR_Man: 'myboss',
-    mR_Del: 'TRUE'
-}];
-
+  
+   // { MR_Code = "1684471530012", TN_ID = 2, MR_FName = "เจริญชัย", MR_MName = "ชัย", MR_LName = "เมืองทอง", HA_ID = "1552458458", MR_HomeTel = "054-1245411", MR_Mobile = "087-4114214", MR_Man = "myboss", MR_Del = false, MR_Email = "jaa@hotmail.com" };
 
 }
 
-function mentorEditController($scope) {
+function mentorEditController($scope, toaster, $stateParams) {
     console.log('mentorEditController');
+    
+    $scope.mentor = [];
+    $scope.Edititemmentor = function () {
+        var input = $scope.mentor;
+        console.log('mentor');
 }
 
 

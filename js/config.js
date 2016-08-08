@@ -76,6 +76,17 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
              url: "/mentor/addpage",
              templateUrl: "views/co-corp/mentor/mentor-addmentor.html",
              controller: mentorAddController,
+             resolve: {
+                 loadPlugin: function ($ocLazyLoad) {
+                     return $ocLazyLoad.load([
+                         {
+                             insertBefore: '#loadBefore',
+                             name: 'toaster',
+                             files: ['js/plugins/toastr/toastr.min.js', 'css/plugins/toastr/toastr.min.css']
+                         }
+                     ]);
+                 }
+             }
          })
 
 
@@ -83,6 +94,18 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
             url: "/mentor/edit",
             templateUrl: "views/co-corp/mentor/mentor-editmentor.html",
             controller: mentorEditController,
+            resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        {
+                            insertBefore: '#loadBefore',
+                            name: 'toaster',
+                            files: ['js/plugins/toastr/toastr.min.js', 'css/plugins/toastr/toastr.min.css']
+                        }
+                    ]);
+                }
+            }
+
         })
 
 
