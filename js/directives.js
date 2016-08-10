@@ -31,6 +31,18 @@
 /**
  * pageTitle - Directive for set Page title - mata title
  */
+
+function toNumber() {
+    return {
+        require: 'ngModel',
+        link: function (scope, elem, attrs, ctrl) {
+            ctrl.$parsers.push(function (value) {
+                return parseFloat(value || '');
+            });
+        }
+    };
+};
+
 function pageTitle($rootScope, $timeout) {
     return {
         link: function(scope, element) {
@@ -499,4 +511,5 @@ angular
     .directive('landingScrollspy', landingScrollspy)
     .directive('fitHeight', fitHeight)
     .directive('iboxToolsFullScreen', iboxToolsFullScreen)
-    .directive('slimScroll', slimScroll);
+    .directive('slimScroll', slimScroll)
+    .directive('toNumber',toNumber);

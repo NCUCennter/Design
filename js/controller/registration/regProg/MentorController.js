@@ -1,6 +1,8 @@
 ﻿function mentorController($scope, $state) {
 
 
+
+
     $scope.Fname = "";
     $scope.Mname = "";
     $scope.Lname = "";
@@ -57,8 +59,8 @@
         }
     ];
 
-    $scope.goEDIT = function () {
-        $state.go('cc.mentor-editmentor');
+    $scope.goEDIT = function (ID) {
+        $state.go('cc.mentor-editmentor', { mentorID:ID});
     }
 
     $scope.Filter = new Object();
@@ -66,16 +68,72 @@
     $scope.goAdd = function () {
         $state.go('cc.mentor-addmentor');
     }
+
+    $scope.del = function () {
+
+        var status = 0;
+
+
+    }
+
+    $scope.DeleteAct = function (inx, person) {
+
+        var input = {  // ประกาศตัวแปร input รับข้อมูลที่จะลบ กรณีมีสอง ID คือ PK & FK
+            Activity: { mR_Code: person.mR_Code },   //PK
+        };
+        SweetAlert.swal({
+            title: "Are you sure?",
+            text: person.mR_Code,
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel !",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        },
+     function (isConfirm) {
+         if (isConfirm) {
+             ActivityService.DelActPeriodActDet(input) //ส่งค่า delete ไปที่ server เพื่อลบ data
+                 .then(function (person) {
+                     SweetAlert.swal("Deleted:", person.mR_Code, "success");
+                     $scope.activity.splice(inx, 1);
+                 }, function (err) {
+
+                     SweetAlert.swal("Cannot Deleted activity", person.mR_Code + " using on activity", "error");
+                 })
+         }
+         else {
+             SweetAlert.swal("Cancelled", "Your imaginary file is safe :)", "error");
+         }
+     });
+    }
 }
 
 function mentorAddController($scope) {
     console.log('mentorAddController');
-    $scope.mentor = [];
-    $scope.additemmentor = function () {
+    $scope.mentor = {};
+    $scope.Submit = function () {
         var input = $scope.mentor;
-        console.log('mentor');
-        //var success = $state.go('');
-        //var bad = toaster;
+        console.log(input);
+        var status = 0;
+        status = 200;
+
+        if (status == 200) {
+            return $state.go('cc.mentor-mentor')
+        }
+        if (status == 400) {
+            toaster.error({
+                title: "Error", body: "Data Already Exist"
+            });
+        }
+
+            //toaster.pop({
+            //    type: 'error',
+            //    showCloseButton: true,
+            //    timeout: 600
+            //});
+        
     }
   
    // { MR_Code = "1684471530012", TN_ID = 2, MR_FName = "เจริญชัย", MR_MName = "ชัย", MR_LName = "เมืองทอง", HA_ID = "1552458458", MR_HomeTel = "054-1245411", MR_Mobile = "087-4114214", MR_Man = "myboss", MR_Del = false, MR_Email = "jaa@hotmail.com" };
@@ -85,10 +143,47 @@ function mentorAddController($scope) {
 function mentorEditController($scope, toaster, $stateParams) {
     console.log('mentorEditController');
     
-    $scope.mentor = [];
-    $scope.Edititemmentor = function () {
+    var mentorID = $stateParams.mentorID;
+
+
+    $scope.mentor = {
+        mR_ID: mR_ID,
+        mR_Code: mR_Code,
+        tN_ID: tN_ID,
+        mR_Fname: mR_Fnam,
+        mR_Mname: mR_Mname,
+        mR_Lname: mR_Lname,
+        hA_ID: hA_ID,
+        mR_HomeTel: mR_HomeTel,
+        mR_Mobile: mR_Mobile,
+        mR_Email: mR_Email,
+        //mR_Date: '07-06-58 9:38',
+        //mR_Man: 'myboss',
+        //mR_Del: 'TRUE'
+    }
+
+    $scope.Submit = function () {
         var input = $scope.mentor;
-        console.log('mentor');
+        console.log(input);
+        var status = 0;
+        status = 200;
+
+        if (status == 200)
+        {
+            return $state.go('cc.mentor-mentor')
+        }
+        if (status == 400)
+        {
+            toaster.error({
+                title: "Error", body: "Data has not change"
+            });
+        }
+
+      
+    }
+
+
+    
 }
 
 

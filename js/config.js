@@ -91,7 +91,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
 
 
         .state('cc.mentor-editmentor', {
-            url: "/mentor/edit",
+            url: "/mentor/:mentorID/edit",
             templateUrl: "views/co-corp/mentor/mentor-editmentor.html",
             controller: mentorEditController,
             resolve: {

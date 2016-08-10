@@ -1,10 +1,5 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-    <meta charset="utf-8" />
-</head>
-<body>
+﻿
+<toaster-container></toaster-container>
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
@@ -24,15 +19,15 @@
                             <label class="col-sm-1 control-label">Personal ID</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" ng-model="mentor.mR_CODE">
+                                <input type="text" maxlength="13" class="form-control" ng-model="mentor.mR_CODE" to-number required>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-1 control-label">รหัสชื่อนำ</label>
+                            <label class="col-sm-1 control-label">Title</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" ng-model="mentor.tN_ID">
+                                <input type="text" maxlength="30" class="form-control" ng-model="mentor.tN_ID">
                             </div>
                         </div>
 
@@ -40,7 +35,7 @@
                             <label class="col-sm-1 control-label">Fistname</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" ng-model="mentor.mR_Fname">
+                                <input type="text" maxlenght="50" class="form-control" ng-model="mentor.mR_Fname" required>
                             </div>
                         </div>
 
@@ -48,7 +43,7 @@
                             <label class="col-sm-1 control-label">Midname</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" ng-model="mentor.mR_Mname">
+                                <input type="text" maxlenght="50" class="form-control" ng-model="mentor.mR_Mname">
                             </div>
                         </div>
 
@@ -56,7 +51,7 @@
                             <label class="col-sm-1 control-label">Lastname</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" ng-model="mentor.mR_Lname">
+                                <input type="text" maxlenght="50" class="form-control" ng-model="mentor.mR_Lname" required>
                             </div>
                         </div>
 
@@ -64,7 +59,7 @@
                             <label class="col-sm-1 control-label">Home ID</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" ng-model="mentor.hA_ID">
+                                <input type="text" maxlength="10" class="form-control" ng-model="mentor.hA_ID" to-number required>
                             </div>
                         </div>
 
@@ -72,7 +67,7 @@
                             <label class="col-sm-1 control-label">Home Tel</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" ng-model="mentor.mR_HomeTel">
+                                <input type="text" maxlength="15" class="form-control" ng-model="mentor.mR_HomeTel" to-number>
                             </div>
                         </div>
 
@@ -80,7 +75,7 @@
                             <label class="col-sm-1 control-label">Tel</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" ng-model="mentor.mR_mobile">
+                                <input type="text" maxlength="13" class="form-control" ng-model="mentor.mR_mobile" to-number>
                             </div>
                         </div>
 
@@ -88,15 +83,15 @@
                             <label class="col-sm-1 control-label">Email</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" ng-model="mentor.mR_Email">
+                                <input type="email" maxlength="50" class="form-control" ng-model="mentor.mR_Email">
                             </div>
                         </div>
 
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">
-                                <button class="btn btn-white" type="submit">Cancel</button>
-                                <button class="btn btn-primary" type="submit" ng-click="edititemmentor()">Save changes</button>
+                                
+                                <button class="btn btn-primary" type="submit" ng-click="Submit()">Save changes</button>
                             </div>
                         </div>
                     </form>
@@ -105,5 +100,4 @@
             </div>
         </div>
     </div>
-</body>
-</html>
+

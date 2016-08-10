@@ -82,8 +82,8 @@
                                     <td>{{ person.mR_Date }}</td>
                                     <td>{{ person.mR_Man }}</td>
                                     <td>{{ person.mR_Del }}</td>
-                                    <td><a ng-click="goEDIT()"><i class="fa fa-paste" ></i></a></td>
-                                    <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
+                                    <td><a ng-click="goEDIT(person.Mr_ID)"><i class="fa fa-paste" ></i></a></td>
+                                    <td><a ng-click="DeleteAct($index,person)"><i class="fa fa-times"></i></a></td>
                                 </tr>
                             </tbody>
                             <tfoot>
