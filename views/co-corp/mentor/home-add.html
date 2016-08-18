@@ -1,0 +1,66 @@
+<div>
+    <div class="ibox-content">
+        <form method="get" name="AddHomeForm" class="form-horizontal">
+
+            <div class="form-group">
+                <label class="col-sm-4 control-label">Home ID</label>
+                <div class="col-sm-6">
+                    <input type="number" name="HaID" maxlength="10" class="form-control" ng-model="hA_ID" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">Home Number</label>
+                <div class="col-sm-6">
+                    <input type="number" name="HNumber" maxlength="10" class="form-control" ng-model="hA_Number" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">Housing Development</label>
+                <div class="col-sm-6">
+                    <input type="text" name="Hdev" maxlength="50" class="form-control" ng-model="hA_HomeName" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">Village no.</label>
+                <div class="col-sm-6">
+                    <input type="number" name="Vno" maxlength="2" class="form-control" ng-model="hA_Moo" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">Alley</label>
+                <div class="col-sm-6">
+                    <input type="text" name="Alley" maxlength="50" class="form-control" ng-model="hA_Soi" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">Road</label>
+                <div class="col-sm-6">
+                    <input type="text" name="Road" maxlength="50" class="form-control" ng-model="hA_Road" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">Sub-district ID</label>
+                <div class="col-sm-6">
+                    <input type="number" name="stdID" maxlength="13" class="form-control" ng-model="sdt_ID" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">Zip Code</label>
+                <div class="col-sm-6">
+                    <input type="number" name="Zipc" maxlength="5" class="form-control" ng-model="hA_PosCode" required>
+                </div>
+            </div>
+
+
+
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <div class="col-sm-4 col-sm-offset-2">
+                    <button class="btn btn-primary" type="button" ng-click="cancel()">Cancel</button>
+                    <button class="btn btn-primary" type="submit" ng-click="Submit()" ng-disabled="AddHomeForm.$invalid">Save changes</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

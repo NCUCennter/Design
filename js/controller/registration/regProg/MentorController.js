@@ -60,7 +60,7 @@
     ];
 
     $scope.goEDIT = function (ID) {
-        $state.go('cc.mentor-editmentor', { mentorID:ID});
+        $state.go('cc.mentor-editmentor', { mentorID: ID });
     }
 
     $scope.Filter = new Object();
@@ -79,11 +79,11 @@
     $scope.DeleteAct = function (inx, person) {
 
         var input = {  // ประกาศตัวแปร input รับข้อมูลที่จะลบ กรณีมีสอง ID คือ PK & FK
-            Activity: { mR_Code: person.mR_Code },   //PK
+            Activity: { mR_ID: person.mR_ID },   //PK
         };
         SweetAlert.swal({
             title: "Are you sure?",
-            text: person.mR_Code,
+            text: person.mR_ID,
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
@@ -96,23 +96,36 @@
          if (isConfirm) {
              ActivityService.DelActPeriodActDet(input) //ส่งค่า delete ไปที่ server เพื่อลบ data
                  .then(function (person) {
-                     SweetAlert.swal("Deleted:", person.mR_Code, "success");
+                     SweetAlert.swal("Deleted:", person.mR_ID, "success");
                      $scope.activity.splice(inx, 1);
                  }, function (err) {
 
-                     SweetAlert.swal("Cannot Deleted activity", person.mR_Code + " using on activity", "error");
+                     SweetAlert.swal("Cannot Deleted activity", person.mR_ID + " using on activity", "error");
                  })
          }
          else {
-             SweetAlert.swal("Cancelled", "Your imaginary file is safe :)", "error");
+             SweetAlert.swal("Cancelled", "Your  data is safe :)", "error");
          }
      });
     }
 }
 
-function mentorAddController($scope) {
+
+function mentorAddController($scope, $modal) {
     console.log('mentorAddController');
     $scope.mentor = {};
+    $scope.homeAddress = [
+ {
+     hA_ID: '12345678'
+ },
+ {
+     hA_ID: '22345678'
+ },
+ {
+     hA_ID: '32345678'
+ },
+    ]
+
     $scope.Submit = function () {
         var input = $scope.mentor;
         console.log(input);
@@ -128,23 +141,31 @@ function mentorAddController($scope) {
             });
         }
 
-            //toaster.pop({
-            //    type: 'error',
-            //    showCloseButton: true,
-            //    timeout: 600
-            //});
-        
-    }
   
-   // { MR_Code = "1684471530012", TN_ID = 2, MR_FName = "เจริญชัย", MR_MName = "ชัย", MR_LName = "เมืองทอง", HA_ID = "1552458458", MR_HomeTel = "054-1245411", MR_Mobile = "087-4114214", MR_Man = "myboss", MR_Del = false, MR_Email = "jaa@hotmail.com" };
+    }
 
+    // { MR_Code = "1684471530012", TN_ID = 2, MR_FName = "เจริญชัย", MR_MName = "ชัย", MR_LName = "เมืองทอง", HA_ID = "1552458458", MR_HomeTel = "054-1245411", MR_Mobile = "087-4114214", MR_Man = "myboss", MR_Del = false, MR_Email = "jaa@hotmail.com" };
+    //ส่วนนี้ใช้กับ modal
+    $scope.openAddHomeID = function () {
+        var HomeIdInstance = $modal.open({
+            templateUrl: 'views/co-corp/mentor/home-add.html',
+            controller: HomeAddressModalAddCtrl
+        });
+        HomeIdInstance
+.result
+.then(function (input) {
+    $scope.homeAddress.push(input);
+});
+    };
+
+
+ 
 }
 
 function mentorEditController($scope, toaster, $stateParams) {
     console.log('mentorEditController');
-    
-    var mentorID = $stateParams.mentorID;
 
+    var mentorID = $stateParams.mentorID;
 
     $scope.mentor = {
         mR_ID: mR_ID,
@@ -168,28 +189,54 @@ function mentorEditController($scope, toaster, $stateParams) {
         var status = 0;
         status = 200;
 
-        if (status == 200)
-        {
+        if (status == 200) {
             return $state.go('cc.mentor-mentor')
         }
-        if (status == 400)
-        {
+        if (status == 400) {
             toaster.error({
                 title: "Error", body: "Data has not change"
             });
         }
 
-      
+
     }
 
 
-    
+
 }
 
+
+function HomeAddressModalAddCtrl($scope,$modalInstance) {
+
+    $scope.homeAddress = {};
+    var input = $scope.homeAddress;
+    var status = 0;
+
+    console.log(input);
+    $scope.cancel = function () {
+        $modalinstance.dismiss();
+    };
+    $scope.Submit = function () {
+        
+       
+        if (status == 200) {
+            $modalInstance.close(input);
+        }
+        
+        if (status == 400) {
+            toaster.error({
+                title: "Error", body: "Check Your Field"
+            });
+        }
+    }
+
+
+
+}
 
 angular
     .module('inspinia')
     .controller('mentorController', mentorController)
     .controller('mentorAddController', mentorAddController)
-    .controller('mentorEditController', mentorEditController);
-
+    .controller('mentorEditController', mentorEditController)
+    .controller('HomeAddressModalAddCtrl', HomeAddressModalAddCtrl);

@@ -83,7 +83,12 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                              insertBefore: '#loadBefore',
                              name: 'toaster',
                              files: ['js/plugins/toastr/toastr.min.js', 'css/plugins/toastr/toastr.min.css']
-                         }
+                         },
+
+                     {
+                         name: 'ui.select',
+                         files: ['js/plugins/ui-select/select.min.js', 'css/plugins/ui-select/select.min.css']
+                     }
                      ]);
                  }
              }
@@ -101,7 +106,11 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                             insertBefore: '#loadBefore',
                             name: 'toaster',
                             files: ['js/plugins/toastr/toastr.min.js', 'css/plugins/toastr/toastr.min.css']
-                        }
+                        },
+                    {
+                        name: 'ui.select',
+                        files: ['js/plugins/ui-select/select.min.js', 'css/plugins/ui-select/select.min.css']
+                }
                     ]);
                 }
             }

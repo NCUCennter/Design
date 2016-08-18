@@ -1,103 +1,264 @@
-﻿
-<toaster-container></toaster-container>
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>
-                        Add form
+﻿<toaster-container></toaster-container>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>
+                    Add form
+                </h5>
 
-                    </h5>
-
-                </div>
-                <div class="ibox-content">
-                    <form method="get" class="form-horizontal">
+            </div>
+            <div class="ibox-content">
+                <form method="get" name="EditFrom" class="form-horizontal">
 
 
 
-                        <div class="form-group">
-                            <label class="col-sm-1 control-label">Personal ID</label>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">Personal ID</label>
 
-                            <div class="col-sm-6">
-                                <input type="text" maxlength="13" class="form-control" ng-model="mentor.mR_CODE" to-number required>
+                        <div class="col-sm-6">
+                            <input type="number" name="Mrcode" maxlength="13" class="form-control" ng-model="mentor.mR_CODE" required>
+                            <div class="m-t-xs" ng-show="AddForm.Mrcode.$invalid && AddForm.Mrcode.$dirty">
+                                <small class="text-danger" ng-show="AddForm.Mrcode.$invalid">Please input number only</small>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="col-sm-1 control-label">Title</label>
+                    </div>
 
-                            <div class="col-sm-6">
-                                <input type="text" maxlength="30" class="form-control" ng-model="mentor.tN_ID">
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">Title</label>
+
+                        <div class="col-sm-6">
+                            <input type="text" maxlength="30" class="form-control" ng-model="mentor.tN_ID">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">Fistname</label>
+
+                        <div class="col-sm-6">
+                            <input type="text" name="Fname" maxlenght="50" class="form-control" ng-model="mentor.mR_Fname" required>
+                            <div class="m-t-xs" ng-show="AddForm.Fname.$dirty">
+                                <small class="text-danger" ng-show="AddForm.Fname.$error.required">Please input firstname</small>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            <label class="col-sm-1 control-label">Fistname</label>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">Midname</label>
 
-                            <div class="col-sm-6">
-                                <input type="text" maxlenght="50" class="form-control" ng-model="mentor.mR_Fname" required>
+                        <div class="col-sm-6">
+                            <input type="text" maxlenght="50" class="form-control" ng-model="mentor.mR_Mname">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">Lastname</label>
+
+                        <div class="col-sm-6">
+                            <input type="text" maxlenght="50" name="Lname" class="form-control" ng-model="mentor.mR_Lname" required>
+                            <div class="m-t-xs" ng-show="AddForm.Lname.$dirty">
+                                <small class="text-danger" ng-show="AddForm.Fname.$error.required">Please input lastname</small>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            <label class="col-sm-1 control-label">Midname</label>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">Home Tel</label>
+                        <div class="col-sm-6 input-group">
+                            <ui-select name="hometel"
+                                       ng-model="mentor.mR_HomeTel"
+                                       theme="bootstrap"
+                                       on-select="setHomeTel($item.Hometel)"
+                                       ng-required="true">
+                                <ui-select-match allow-clear="true" placeholder="input Home ID">{{$select.homeAdress.hA_ID}}</ui-select-match>
+                                <ui-select-choices repeat="Hometel as Hometel in Homeaddress | filter: $select.search ">
+                                    <div ng-bind-html="Hometel.hA_ID | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                            <span class="input-group-btn">
+                                <btton class="btn btn-primary" type="button" ng-click="openAddHomeID()">ADD</button>
+                            </span>
+                        </div>
+                    </div>
 
-                            <div class="col-sm-6">
-                                <input type="text" maxlenght="50" class="form-control" ng-model="mentor.mR_Mname">
+                    <!--<div class="form-group">
+                        <label class="col-sm-1 control-label">Home Tel</label>
+
+                        <div class="col-sm-6">
+                            <input type="number" maxlength="15" name="hometel" class="form-control" ng-model="mentor.mR_HomeTel" >
+                            <div class="m-t-xs" ng-show="AddForm.hometel.$invalid && AddForm.hometel.$dirty">
+                                <small class="text-danger" ng-show="AddForm.mobile.$invalid">Please input number only</small>
+                            </div>
+
+                        </div>
+                    </div>-->
+
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">Tel</label>
+
+                        <div class="col-sm-6">
+                            <input type="number" maxlength="13" name="mobile" class="form-control" ng-model="mentor.mR_mobile">
+                            <div class="m-t-xs" ng-show="AddForm.mobile.$invalid && AddForm.mobile.$dirty">
+                                <small class="text-danger" ng-show="AddForm.mobile.$invalid">Please input number only</small>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            <label class="col-sm-1 control-label">Lastname</label>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">Email</label>
 
-                            <div class="col-sm-6">
-                                <input type="text" maxlenght="50" class="form-control" ng-model="mentor.mR_Lname" required>
+                        <div class="col-sm-6">
+                            <input type="email" maxlength="50" name="email" class="form-control" ng-model="mentor.mR_Email">
+                            <div class="m-t-xs" ng-show="AddForm.email.$invalid && AddForm.email.$dirty">
+                                <small class="text-danger" ng-show="AddForm.email.$error">Please input a valid email address</small>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            <label class="col-sm-1 control-label">Home ID</label>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-2">
 
-                            <div class="col-sm-6">
-                                <input type="text" maxlength="10" class="form-control" ng-model="mentor.hA_ID" to-number required>
-                            </div>
+                            <button class="btn btn-primary" type="submit" ng-click="Submit()" ng-disabled="form_name.$invalid">Save changes</button>
                         </div>
+                    </div>
+                </form>
 
-                        <div class="form-group">
-                            <label class="col-sm-1 control-label">Home Tel</label>
-
-                            <div class="col-sm-6">
-                                <input type="text" maxlength="15" class="form-control" ng-model="mentor.mR_HomeTel" to-number>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-1 control-label">Tel</label>
-
-                            <div class="col-sm-6">
-                                <input type="text" maxlength="13" class="form-control" ng-model="mentor.mR_mobile" to-number>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-1 control-label">Email</label>
-
-                            <div class="col-sm-6">
-                                <input type="email" maxlength="50" class="form-control" ng-model="mentor.mR_Email">
-                            </div>
-                        </div>
-
-                        <div class="hr-line-dashed"></div>
-                        <div class="form-group">
-                            <div class="col-sm-4 col-sm-offset-2">
-                                
-                                <button class="btn btn-primary" type="submit" ng-click="Submit()">Save changes</button>
-                            </div>
-                        </div>
-                    </form>
-
-                </div>
             </div>
         </div>
     </div>
+</div>
+
+<toaster-container></toaster-container>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>
+                    Add form
+                </h5>
+
+            </div>
+            <div class="ibox-content">
+                <form method="get" name="AddForm" class="form-horizontal">
+
+
+
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">Personal ID</label>
+
+                        <div class="col-sm-6">
+                            <input type="number" name="Mrcode" maxlength="13" class="form-control" ng-model="mentor.mR_CODE" required>
+                            <div class="m-t-xs" ng-show="AddForm.Mrcode.$invalid && AddForm.Mrcode.$dirty">
+                                <small class="text-danger" ng-show="AddForm.Mrcode.$invalid">Please input number only</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">Title</label>
+
+                        <div class="col-sm-6">
+                            <input type="text" maxlength="30" class="form-control" ng-model="mentor.tN_ID">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">Fistname</label>
+
+                        <div class="col-sm-6">
+                            <input type="text" name="Fname" maxlenght="50" class="form-control" ng-model="mentor.mR_Fname" required>
+                            <div class="m-t-xs" ng-show="AddForm.Fname.$dirty">
+                                <small class="text-danger" ng-show="AddForm.Fname.$error.required">Please input firstname</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">Midname</label>
+
+                        <div class="col-sm-6">
+                            <input type="text" maxlenght="50" class="form-control" ng-model="mentor.mR_Mname">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">Lastname</label>
+
+                        <div class="col-sm-6">
+                            <input type="text" maxlenght="50" name="Lname" class="form-control" ng-model="mentor.mR_Lname" required>
+                            <div class="m-t-xs" ng-show="AddForm.Lname.$dirty">
+                                <small class="text-danger" ng-show="AddForm.Fname.$error.required">Please input lastname</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">Home Tel</label>
+                        <div class="col-sm-6 input-group">
+                            <ui-select name="hometel"
+                                       ng-model="mentor.mR_HomeTel"
+                                       theme="bootstrap"
+                                       on-select="setHomeTel($item.Hometel)"
+                                       ng-required="true">
+                                <ui-select-match allow-clear="true" placeholder="input Home ID">{{$select.homeAdress.hA_ID}}</ui-select-match>
+                                <ui-select-choices repeat="Hometel as Hometel in Homeaddress | filter: $select.search ">
+                                    <div ng-bind-html="Hometel.hA_ID | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                            <span class="input-group-btn">
+                                <btton class="btn btn-primary" type="button" ng-click="openAddHomeID()">ADD</button>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--<div class="form-group">
+                        <label class="col-sm-1 control-label">Home Tel</label>
+
+                        <div class="col-sm-6">
+                            <input type="number" maxlength="15" name="hometel" class="form-control" ng-model="mentor.mR_HomeTel" >
+                            <div class="m-t-xs" ng-show="AddForm.hometel.$invalid && AddForm.hometel.$dirty">
+                                <small class="text-danger" ng-show="AddForm.mobile.$invalid">Please input number only</small>
+                            </div>
+
+                        </div>
+                    </div>-->
+
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">Tel</label>
+
+                        <div class="col-sm-6">
+                            <input type="number" maxlength="13" name="mobile" class="form-control" ng-model="mentor.mR_mobile">
+                            <div class="m-t-xs" ng-show="AddForm.mobile.$invalid && AddForm.mobile.$dirty">
+                                <small class="text-danger" ng-show="AddForm.mobile.$invalid">Please input number only</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">Email</label>
+
+                        <div class="col-sm-6">
+                            <input type="email" maxlength="50" name="email" class="form-control" ng-model="mentor.mR_Email">
+                            <div class="m-t-xs" ng-show="AddForm.email.$invalid && AddForm.email.$dirty">
+                                <small class="text-danger" ng-show="AddForm.email.$error">Please input a valid email address</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-2">
+
+                            <button class="btn btn-primary" type="submit" ng-click="Submit()" ng-disabled="EditFrom.$invalid">Save changes</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
 
