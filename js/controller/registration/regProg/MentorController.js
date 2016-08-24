@@ -162,7 +162,7 @@ function mentorAddController($scope, $modal) {
  
 }
 
-function mentorEditController($scope, toaster, $stateParams) {
+function mentorEditController($scope, toaster, $stateParams,$modal) {
     console.log('mentorEditController');
 
     var mentorID = $stateParams.mentorID;
@@ -200,6 +200,18 @@ function mentorEditController($scope, toaster, $stateParams) {
 
 
     }
+
+    $scope.openAddHomeID = function () {
+        var HomeIdInstance = $modal.open({
+            templateUrl: 'views/co-corp/mentor/home-add.html',
+            controller: HomeAddressModalAddCtrl
+        });
+        HomeIdInstance
+.result
+.then(function (input) {
+    $scope.homeAddress.push(input);
+});
+    };
 
 
 

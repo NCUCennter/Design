@@ -1,5 +1,26 @@
-﻿<toaster-container></toaster-container>
-    <div class="row">
+﻿<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Basic Form</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a ui-sref="cc">CoCorp</a>
+            </li>
+            <li>
+                <a>Program</a>
+            </li>
+            <li>
+                <a ui-sref="cc.mentor-mentor">Mentor</a>
+            </li>
+            <li class="active">
+                <a>Add-Mentor</a>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+    <div >
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
@@ -10,11 +31,11 @@
                 </div>
                 <div class="ibox-content">
                     <form method="get" name="AddForm" class="form-horizontal">
-                 
+
 
 
                         <div class="form-group">
-                            <label class="col-sm-1 control-label">Personal ID</label>
+                            <label class="col-sm-2 control-label">Personal ID</label>
 
                             <div class="col-sm-6">
                                 <input type="number" name="Mrcode" maxlength="13" class="form-control" ng-model="mentor.mR_CODE" required>
@@ -22,11 +43,11 @@
                                     <small class="text-danger" ng-show="AddForm.Mrcode.$invalid">Please input number only</small>
                                 </div>
                             </div>
-                            
+
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-1 control-label">Title</label>
+                            <label class="col-sm-2 control-label">Title</label>
 
                             <div class="col-sm-6">
                                 <input type="text" maxlength="30" class="form-control" ng-model="mentor.tN_ID">
@@ -34,7 +55,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-1 control-label">Fistname</label>
+                            <label class="col-sm-2 control-label">Fistname</label>
 
                             <div class="col-sm-6">
                                 <input type="text" name="Fname" maxlenght="50" class="form-control" ng-model="mentor.mR_Fname" required>
@@ -45,7 +66,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-1 control-label">Midname</label>
+                            <label class="col-sm-2 control-label">Midname</label>
 
                             <div class="col-sm-6">
                                 <input type="text" maxlenght="50" class="form-control" ng-model="mentor.mR_Mname">
@@ -53,7 +74,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-1 control-label">Lastname</label>
+                            <label class="col-sm-2 control-label">Lastname</label>
 
                             <div class="col-sm-6">
                                 <input type="text" maxlenght="50" name="Lname" class="form-control" ng-model="mentor.mR_Lname" required>
@@ -64,26 +85,28 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-1 control-label">Home Tel</label>
-                            <div class="col-sm-6 input-group">
+                            <label class="col-sm-2 control-label">Home ID</label>
+                            <div class="col-sm-6">
+                            <div class="input-group">
                                 <ui-select name="hometel"
-                                           ng-model="mentor.mR_HomeTel"
+                                           ng-model="mentor.mR_hA_ID"
                                            theme="bootstrap"
-                                           on-select="setHomeTel($item.Hometel)"
+                                           on-select="setHomeID($item.HomeID)"
                                            ng-required="true">
                                     <ui-select-match allow-clear="true" placeholder="input Home ID">{{$select.homeAdress.hA_ID}}</ui-select-match>
-                                    <ui-select-choices repeat="Hometel as Hometel in Homeaddress | filter: $select.search ">
-                                        <div ng-bind-html="Hometel.hA_ID | highlight: $select.search"></div>
+                                    <ui-select-choices repeat="HomeID as HomeID in Homeaddress | filter: $select.search ">
+                                        <div ng-bind-html="HomeID.hA_ID | highlight: $select.search"></div>
                                     </ui-select-choices>
                                 </ui-select>
                                 <span class="input-group-btn">
-                                    <btton class="btn btn-primary" type="button" ng-click="openAddHomeID()">ADD</button>
+                                    <button class="btn btn-primary" type="button" ng-click="openAddHomeID()">ADD</button>
                                 </span>
                             </div>
+                                </div>
                         </div>
-          
-                        <!--<div class="form-group">
-                            <label class="col-sm-1 control-label">Home Tel</label>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Home Tel</label>
 
                             <div class="col-sm-6">
                                 <input type="number" maxlength="15" name="hometel" class="form-control" ng-model="mentor.mR_HomeTel" >
@@ -92,10 +115,10 @@
                                 </div>
 
                             </div>
-                        </div>-->
+                        </div>
 
                         <div class="form-group">
-                            <label class="col-sm-1 control-label">Tel</label>
+                            <label class="col-sm-2 control-label">Tel</label>
 
                             <div class="col-sm-6">
                                 <input type="number" maxlength="13" name="mobile" class="form-control" ng-model="mentor.mR_mobile">
@@ -106,7 +129,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-1 control-label">Email</label>
+                            <label class="col-sm-2 control-label">Email</label>
 
                             <div class="col-sm-6">
                                 <input type="email" maxlength="50" name="email" class="form-control" ng-model="mentor.mR_Email">
@@ -119,8 +142,8 @@
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">
-                                
-                                <button class="btn btn-primary" type="submit" ng-click="Submit()"  ng-disabled="form_name.$invalid">Save changes</button>
+
+                                <button class="btn btn-primary" type="submit" ng-click="Submit()" ng-disabled="AddForm.$invalid">Save changes</button>
                             </div>
                         </div>
                     </form>
