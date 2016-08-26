@@ -1,14 +1,23 @@
 ﻿function mentorController($scope, $state) {
 
-
-
-
     $scope.Fname = "";
     $scope.Mname = "";
     $scope.Lname = "";
     $scope.M_ID = "";
 
-
+    $scope.titleName = [{
+        tN_ID: 1,
+        tN_NameTH: 'นาย'
+    },
+   {
+       tN_ID: 1,
+       tN_NameTH: 'นาง'
+   },
+    {
+        tN_ID: 1,
+        tN_NameTH: 'นางสาว'
+    }
+    ]
 
     $scope.mentor = [
     {
@@ -60,6 +69,7 @@
     ];
 
     $scope.goEDIT = function (ID) {
+
         $state.go('cc.mentor-editmentor', { mentorID: ID });
     }
 
@@ -111,7 +121,7 @@
 }
 
 
-function mentorAddController($scope, $modal) {
+function mentorAddController($scope, $modal) {e
     console.log('mentorAddController');
     $scope.mentor = {};
     $scope.homeAddress = [
@@ -125,6 +135,7 @@ function mentorAddController($scope, $modal) {
      hA_ID: '32345678'
  },
     ]
+
 
     $scope.Submit = function () {
         var input = $scope.mentor;
@@ -141,7 +152,7 @@ function mentorAddController($scope, $modal) {
             });
         }
 
-  
+
     }
 
     // { MR_Code = "1684471530012", TN_ID = 2, MR_FName = "เจริญชัย", MR_MName = "ชัย", MR_LName = "เมืองทอง", HA_ID = "1552458458", MR_HomeTel = "054-1245411", MR_Mobile = "087-4114214", MR_Man = "myboss", MR_Del = false, MR_Email = "jaa@hotmail.com" };
@@ -149,7 +160,54 @@ function mentorAddController($scope, $modal) {
     $scope.openAddHomeID = function () {
         var HomeIdInstance = $modal.open({
             templateUrl: 'views/co-corp/mentor/home-add.html',
-            controller: HomeAddressModalAddCtrl
+            controller: HomeAddressModalAddCtrl,
+            resolve: {
+                //Province: [{
+                //    pV_ID: '1',
+                //    pV_NameTH: 'Chiangmai'
+                //},
+                //{
+                //    pV_ID: '2',
+                //    pV_NameTH: 'LP'
+                //},
+                //{
+                //    pV_ID: '3',
+                //    pV_NameTH: 'BKK'
+                //}
+                //],
+                //District: [{
+                //    dT_ID: '1',
+                //    dT_NameTH: 'Hangdong',
+                //    pV_ID: '1'
+                //},
+                //{
+                //    dT_ID: '2',
+                //    dT_NameTH: 'NongKaew',
+                //    pV_ID: '1'
+                //},
+                //{
+                //    dT_ID: '3',
+                //    dT_NameTH: 'Srilom',
+                //    pV_ID: '3'
+                //},
+                //], SubDistrict: [{
+                //    std_ID: '1',
+                //    std_NameTH: 'std1',
+                //    dT_ID: '1'
+                //},
+                //{
+                //    std_ID: '2',
+                //    std_NameTH: 'std2',
+                //    dT_ID: '2'
+                //},
+                //{
+                //    std_ID: '3',
+                //    std_NameTH: 'std3',
+                //    dT_ID: '2'
+                //}
+                //]
+            }
+
         });
         HomeIdInstance
 .result
@@ -159,11 +217,13 @@ function mentorAddController($scope, $modal) {
     };
 
 
- 
+
 }
 
-function mentorEditController($scope, toaster, $stateParams,$modal) {
+function mentorEditController($scope, toaster, $stateParams, $modal) {
     console.log('mentorEditController');
+
+
 
     var mentorID = $stateParams.mentorID;
 
@@ -218,7 +278,7 @@ function mentorEditController($scope, toaster, $stateParams,$modal) {
 }
 
 
-function HomeAddressModalAddCtrl($scope,$modalInstance) {
+function HomeAddressModalAddCtrl($scope, $modalInstance) {
 
     $scope.homeAddress = {};
     var input = $scope.homeAddress;
@@ -229,17 +289,18 @@ function HomeAddressModalAddCtrl($scope,$modalInstance) {
         $modalinstance.dismiss();
     };
     $scope.Submit = function () {
-        
-       
+
+
         if (status == 200) {
             $modalInstance.close(input);
         }
-        
+
         if (status == 400) {
             toaster.error({
                 title: "Error", body: "Check Your Field"
             });
         }
+
     }
 
 
