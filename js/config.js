@@ -66,7 +66,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                             name: 'ui.footable',
                             files: ['js/plugins/footable/angular-footable.js']
                         },
-                          {
+                        {
                             files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
                         },
                         {
@@ -117,7 +117,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                     {
                         name: 'ui.select',
                         files: ['js/plugins/ui-select/select.min.js', 'css/plugins/ui-select/select.min.css']
-                }
+                    }
                     ]);
                 }
             }

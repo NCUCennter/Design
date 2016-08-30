@@ -5,20 +5,6 @@
     $scope.Lname = "";
     $scope.M_ID = "";
 
-    $scope.titleName = [{
-        tN_ID: 1,
-        tN_NameTH: 'นาย'
-    },
-   {
-       tN_ID: 1,
-       tN_NameTH: 'นาง'
-   },
-    {
-        tN_ID: 1,
-        tN_NameTH: 'นางสาว'
-    }
-    ]
-
     $scope.mentor = [
     {
         mR_ID: '2558001',
@@ -86,7 +72,7 @@
 
     }
 
-    $scope.DeleteAct = function (inx, person) {
+    $scope.DeleteAct = function ($index, person) {
 
         var input = {  // ประกาศตัวแปร input รับข้อมูลที่จะลบ กรณีมีสอง ID คือ PK & FK
             Activity: { mR_ID: person.mR_ID },   //PK
@@ -121,22 +107,45 @@
 }
 
 
-function mentorAddController($scope, $modal) {e
-    console.log('mentorAddController');
+function mentorAddController($scope, $modal) {
+
+    //scope หลักที่ต้องแอดไป mentor
     $scope.mentor = {};
+
+    console.log($scope.mentor);
+    //อันนี้ Home Address จำลอง
     $scope.homeAddress = [
+    {
+        hA_ID: '12345678',
+        std_ID: '1'
+    },
+    {
+        hA_ID: '22345678',
+        std_ID: '2'
+    },
+    {
+        hA_ID: '32345678',
+        std_ID: '3'
+    }
+    ];
+    //---------------------------------------------
+    //อันนี้ คำนำหน้าชื่อจำลอง
+    $scope.titleName = [{
+        tN_ID: 1,
+        tN_NameTH: 'นาย'
+    },
  {
-     hA_ID: '12345678'
+     tN_ID: 2,
+     tN_NameTH: 'นาง'
  },
- {
-     hA_ID: '22345678'
- },
- {
-     hA_ID: '32345678'
- },
-    ]
+  {
+      tN_ID: 3,
+      tN_NameTH: 'นางสาว'
+  }
+    ];
 
 
+    //----------------------------------------
     $scope.Submit = function () {
         var input = $scope.mentor;
         console.log(input);
@@ -162,59 +171,70 @@ function mentorAddController($scope, $modal) {e
             templateUrl: 'views/co-corp/mentor/home-add.html',
             controller: HomeAddressModalAddCtrl,
             resolve: {
-                //Province: [{
-                //    pV_ID: '1',
-                //    pV_NameTH: 'Chiangmai'
-                //},
-                //{
-                //    pV_ID: '2',
-                //    pV_NameTH: 'LP'
-                //},
-                //{
-                //    pV_ID: '3',
-                //    pV_NameTH: 'BKK'
-                //}
-                //],
-                //District: [{
-                //    dT_ID: '1',
-                //    dT_NameTH: 'Hangdong',
-                //    pV_ID: '1'
-                //},
-                //{
-                //    dT_ID: '2',
-                //    dT_NameTH: 'NongKaew',
-                //    pV_ID: '1'
-                //},
-                //{
-                //    dT_ID: '3',
-                //    dT_NameTH: 'Srilom',
-                //    pV_ID: '3'
-                //},
-                //], SubDistrict: [{
-                //    std_ID: '1',
-                //    std_NameTH: 'std1',
-                //    dT_ID: '1'
-                //},
-                //{
-                //    std_ID: '2',
-                //    std_NameTH: 'std2',
-                //    dT_ID: '2'
-                //},
-                //{
-                //    std_ID: '3',
-                //    std_NameTH: 'std3',
-                //    dT_ID: '2'
-                //}
-                //]
+                Province: function () {
+                    var Pro = [{
+                        pV_ID: '1',
+                        pV_NameTH: 'Chiangmai'
+                    },
+                  {
+                      pV_ID: '2',
+                      pV_NameTH: 'LP'
+                  },
+                  {
+                      pV_ID: '3',
+                      pV_NameTH: 'BKK'
+                  }]
+                    return Pro;
+                },
+
+                District: function () {
+                    var Dis = [{
+                        dT_ID: '1',
+                        dT_NameTH: 'Hangdong',
+                        pV_ID: '1'
+                    },
+                {
+                    dT_ID: '2',
+                    dT_NameTH: 'NongKaew',
+                    pV_ID: '1'
+                },
+                {
+                    dT_ID: '3',
+                    dT_NameTH: 'Srilom',
+                    pV_ID: '3'
+                }]
+                    return Dis;
+                },
+
+                SubDistrict: function () {
+                    var Subdis =
+                    [{
+                        std_ID: '1',
+                        std_NameTH: 'std1',
+                        dT_ID: '1'
+                    },
+                    {
+                        std_ID: '2',
+                        std_NameTH: 'std2',
+                        dT_ID: '2'
+                    },
+                    {
+                        std_ID: '3',
+                        std_NameTH: 'std3',
+                        dT_ID: '2'
+                    }]
+                    return Subdis;
+                }
+
             }
 
         });
         HomeIdInstance
-.result
-.then(function (input) {
-    $scope.homeAddress.push(input);
-});
-    };
+    .result
+    .then(function (input) {
+        $scope.homeAddress.push(input);
+    });
+    }
 
 
 
@@ -278,15 +298,19 @@ function mentorEditController($scope, toaster, $stateParams, $modal) {
 }
 
 
-function HomeAddressModalAddCtrl($scope, $modalInstance) {
+function HomeAddressModalAddCtrl($scope, $modalInstance, Province, District, SubDistrict) {
 
     $scope.homeAddress = {};
     var input = $scope.homeAddress;
     var status = 0;
 
+    $scope.Province = Province;
+    $scope.District = District;
+    $scope.SubDistrict = SubDistrict;
+
     console.log(input);
     $scope.cancel = function () {
-        $modalinstance.dismiss();
+        $modalInstance.dismiss();
     };
     $scope.Submit = function () {
 
