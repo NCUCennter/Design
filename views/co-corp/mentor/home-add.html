@@ -45,6 +45,7 @@
                         <ui-select name="Province"
                                    ng-model="TestProvince"
                                    theme="bootstrap"
+                                   on-select="prove(TestProvince)"
                                    ng-required="true">
                             <ui-select-match allow-clear="true" placeholder="input Province here">{{$select.selected.pV_NameTH}}</ui-select-match>
                             <ui-select-choices repeat="pvid.pV_ID as pvid in Province | filter: $select.search ">

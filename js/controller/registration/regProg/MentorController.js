@@ -54,6 +54,7 @@
         }
     ];
 
+    
     $scope.goEDIT = function (ID) {
 
         $state.go('cc.mentor-editmentor', { mentorID: ID });
@@ -298,17 +299,29 @@ function mentorEditController($scope, toaster, $stateParams, $modal) {
 }
 
 
-function HomeAddressModalAddCtrl($scope, $modalInstance, Province, District, SubDistrict) {
+function HomeAddressModalAddCtrl($scope, $modalInstance, Province, District, SubDistrict,$filter) {
+    $scope.Province = Province;
+    $scope.District = District;
+    $scope.SubDistrict = SubDistrict;
+
+    $scope.prove = function (prov) {
+        if ($scope.District != District)
+        {
+            $scope.District = District;
+        }
+        var dt = $filter('filter')($scope.District, { pV_ID: prov });
+        $scope.District = dt;
+        console.log($scope.District);
+    }
+
+    $scope.$watch('District.dT_ID', function (oldvalue, newvalue) {
+        $scope.Province.pV_ID = null;
+    });
 
     $scope.homeAddress = {};
     var input = $scope.homeAddress;
     var status = 0;
 
-    $scope.Province = Province;
-    $scope.District = District;
-    $scope.SubDistrict = SubDistrict;
-
-    console.log(input);
     $scope.cancel = function () {
         $modalInstance.dismiss();
     };
