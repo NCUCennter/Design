@@ -222,7 +222,7 @@ function mentorAddController($scope, $modal) {
                     {
                         std_ID: '3',
                         std_NameTH: 'std3',
-                        dT_ID: '2'
+                        dT_ID: '3'
                     }]
                     return Subdis;
                 }
@@ -296,27 +296,112 @@ function mentorEditController($scope, toaster, $stateParams, $modal) {
 
 
 
+    //function FacMajController($scope, $state, $filter, $rootScope, FacultyService, MajorService, $stateParams) {
+    //    FacultyService.EagerLoadFaculty()
+    //        .then(function (data) {
+    //            $scope.facl = data;
+    //        })
+    //    $scope.currentPage = 3; /** page size start at 3**/
+    //    $scope.pageSize = 10;
+    //    $scope.pageActivity = function (num) {
+    //    };
+    //    $scope.goAdd = function () {
+
+    //        $state.go('registration.rprog-addfaculty');
+    //    }
+    //    $scope.goEdit = function (FacID) {
+    //        $state.go('registration.rprog-editfaculty', { facID: FacID })
+    //    }
+    //    $scope.goAddMaj = function (FacID) {
+    //        $state.go('registration.rprog-addmajor', { facID: FacID })
+    //    }
+    //    $scope.goEditMaj = function (MajID) {
+    //        $state.go('registration.rprog-editmajor', { MajID: MajID })
+    //    }
+
+    //}
+    //function FacultyAddController($scope, $state, $filter, $rootScope, FacultyService, MajorService, toaster) {
+    //    $scope.fac = {
+    //        fac_NameEN: "Engineering",
+    //        fac_NameTH: "วิศวกรรมศาสตร์",
+    //        fac_Mua: 25655
+    //    }
+    //    $scope.submit = function () {
+    //        FacultyService.AddFaculty($scope.fac)
+    //            .then(function (data) {
+    //                $state.go('registration.rprog-faculty');
+    //            },
+    //            function (err) {
+    //                toaster.error({
+    //                    title: "Error", body: err.message + " Has Exited"
+    //                });
+    //            })
+
+    //    }
+    //}
+    //function FacultyEditController($scope, $state, $filter, $rootScope, FacultyService, MajorService, toaster, $stateParams) {
+    //    var facID = $stateParams.facID;
+
+    //    FacultyService.GetFacultyByID({ fac_ID: facID })
+    //        .then(function (data) {
+    //            $scope.fac = {
+    //                fac_ID: data.fac_ID,
+    //                fac_NameEN: data.fac_NameEN,
+    //                fac_NameTH: data.fac_NameTH,
+    //                fac_Mua: parseInt(data.fac_Mua)
+    //            }
+    //        }, function (err) {
+
+    //        })
+
+
+    //    $scope.submit = function () {
+    //        FacultyService.PutFaculty($scope.fac)
+    //            .then(function (data) {
+    //                $state.go('registration.rprog-faculty');
+    //            },
+    //            function (err) {
+    //                toaster.error({
+    //                    title: "Error", body: err.message + " Has Exited"
+    //                });
+    //            })
+
+    //    }
+    //}
+
 }
 
 
-function HomeAddressModalAddCtrl($scope, $modalInstance, Province, District, SubDistrict,$filter) {
+function HomeAddressModalAddCtrl($scope, $modalInstance, Province, District, SubDistrict, $filter) {
+   
     $scope.Province = Province;
     $scope.District = District;
     $scope.SubDistrict = SubDistrict;
+  
+    //สร้างสโคปรับค่าก่อย อิอิ
+    $scope.ha = {}
 
-    $scope.prove = function (prov) {
-        if ($scope.District != District)
-        {
-            $scope.District = District;
-        }
-        var dt = $filter('filter')($scope.District, { pV_ID: prov });
+    $scope.changepv = function (prov) {
+        var dt = $filter('filter')(District, { pV_ID: prov });
         $scope.District = dt;
-        console.log($scope.District);
+    }
+    
+    $scope.$watch('ha.province', function (newvalue, oldvalue) {
+     
+        $scope.ha.district = null;
+    });
+
+
+    $scope.changedt = function (dist) {
+        var sdt = $filter('filter')(SubDistrict, { dT_ID: dist });
+        $scope.SubDistrict = sdt;
     }
 
-    $scope.$watch('District.dT_ID', function (oldvalue, newvalue) {
-        $scope.Province.pV_ID = null;
+    $scope.$watch('ha.district', function (newvalue, oldvalue) {
+        $scope.homeAddress.sdt_ID = null;
     });
+
+ 
 
     $scope.homeAddress = {};
     var input = $scope.homeAddress;

@@ -43,9 +43,9 @@
                 <label class="col-sm-4 control-label">Province</label>
                 <div class="col-sm-6">
                         <ui-select name="Province"
-                                   ng-model="TestProvince"
+                                   ng-model="ha.province"
                                    theme="bootstrap"
-                                   on-select="prove(TestProvince)"
+                                   on-select="changepv(ha.province)"
                                    ng-required="true">
                             <ui-select-match allow-clear="true" placeholder="input Province here">{{$select.selected.pV_NameTH}}</ui-select-match>
                             <ui-select-choices repeat="pvid.pV_ID as pvid in Province | filter: $select.search ">
@@ -56,11 +56,12 @@
             </div>
 
             <div class="form-group">
-                <label class="col-sm-4 control-label">Sub-District</label>
+                <label class="col-sm-4 control-label">District</label>
                 <div class="col-sm-6">
                     <ui-select name="Distric"
-                               ng-model="testDistrict"
+                               ng-model="ha.district"
                                theme="bootstrap"
+                               on-select="changedt(ha.district)"
                                ng-required="true">
                         <ui-select-match allow-clear="true" placeholder="input district here">{{$select.selected.dT_NameTH}}</ui-select-match>
                         <ui-select-choices repeat="disid.dT_ID as disid in District | filter: $select.search">
@@ -75,7 +76,7 @@
                 <label class="col-sm-4 control-label">Sub-District</label>
                 <div class="col-sm-6">
                         <ui-select name="SubDistric"
-                                   ng-model="homeAddress.std_ID"
+                                   ng-model="homeAddress.sdt_ID"
                                    theme="bootstrap"
                                    ng-required="true">
                             <ui-select-match allow-clear="true" placeholder="input subdis here">{{$select.selected.std_NameTH}}</ui-select-match>
