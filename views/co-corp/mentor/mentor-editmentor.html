@@ -21,13 +21,12 @@
 
     </div>
 </div>
-
-<div class="row">
+<div>
     <div class="col-lg-12">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
                 <h5>
-                    Edit From
+                    Edit Page
                 </h5>
 
             </div>
@@ -49,12 +48,24 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Title</label>
-
+                        <label class="col-sm-2 control-label">Title Name</label>
                         <div class="col-sm-6">
-                            <input type="text" maxlength="30" class="form-control" ng-model="mentor.tN_ID">
+                            <div class="m-t-xs">
+                                <ui-select name="TitleName"
+                                           ng-model="mentor.tN_ID"
+                                           theme="bootstrap"
+                                           ng-required="true">
+                                    <ui-select-match allow-clear="true" placeholder="input title id here">{{$select.selected.tN_NameTH}}</ui-select-match>
+                                    <ui-select-choices repeat="tnid.tN_ID as tnid in titleName | filter: $select.search ">
+                                        <div ng-bind-html="tnid.tN_NameTH | highlight: $select.search"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
                         </div>
                     </div>
+
+
+
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Fistname</label>
@@ -85,23 +96,23 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Home ID</label>
                         <div class="col-sm-6">
-                        <div class="input-group">
-                            <ui-select name="hometel"
-                                       ng-model="mentor.mR_hA_ID"
-                                       theme="bootstrap"
-                                       on-select="setHomeID($item.HomeID)"
-                                       ng-required="true">
-                                <ui-select-match allow-clear="true" placeholder="input Home ID">{{$select.homeAdress.hA_ID}}</ui-select-match>
-                                <ui-select-choices repeat="HomeID as HomeID in Homeaddress | filter: $select.search ">
-                                    <div ng-bind-html="HomeID.hA_ID | highlight: $select.search"></div>
-                                </ui-select-choices>
-                            </ui-select>
-                            <span class="input-group-btn">
-                                <button class="btn btn-primary" type="button" ng-click="openAddHomeID()">ADD</button>
-                            </span>
+                            <div class="input-group">
+                                <ui-select name="hometel"
+                                           ng-model="mentor.hA_ID"
+                                           theme="bootstrap"
+                                           ng-required="true">
+                                    <ui-select-match allow-clear="true" placeholder="input Home ID">{{$select.selected.hA_ID}}</ui-select-match>
+                                    <ui-select-choices repeat="HomeID.hA_ID as HomeID in homeAddress | filter: $select.search ">
+                                        <div ng-bind-html="HomeID.hA_ID | highlight: $select.search"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="button" ng-click="openAddHomeID()">ADD</button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -110,7 +121,7 @@
                         <label class="col-sm-2 control-label">Home Tel</label>
 
                         <div class="col-sm-6">
-                            <input type="number" maxlength="15" name="hometel" class="form-control" ng-model="mentor.mR_HomeTel" >
+                            <input type="number" maxlength="15" name="hometel" class="form-control" ng-model="mentor.mR_HomeTel">
                             <div class="m-t-xs" ng-show="AddForm.hometel.$invalid && AddForm.hometel.$dirty">
                                 <small class="text-danger" ng-show="AddForm.mobile.$invalid">Please input number only</small>
                             </div>
