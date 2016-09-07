@@ -1,5 +1,5 @@
 ﻿<toaster-container></toaster-container>
-<div class="row wrapper border-bottom white-bg page-heading">
+<div class="row wrapper border-bottom white-bg page-heading animated bounceIn">
     <div class="col-lg-10">
         <h2>Basic Form</h2>
         <ol class="breadcrumb">
@@ -30,7 +30,7 @@
                 </h5>
 
             </div>
-            <div class="ibox-content">
+            <div class="ibox-content animated fadeInRight">
                 <form method="get" name="EditForm" class="form-horizontal">
 
 
@@ -40,8 +40,8 @@
 
                         <div class="col-sm-6">
                             <input type="number" name="Mrcode" maxlength="13" class="form-control" ng-model="mentor.mR_CODE" required>
-                            <div class="m-t-xs" ng-show="AddForm.Mrcode.$invalid && AddForm.Mrcode.$dirty">
-                                <small class="text-danger" ng-show="AddForm.Mrcode.$invalid">Please input number only</small>
+                            <div class="m-t-xs" ng-show="EditForm.Mrcode.$invalid && EditForm.Mrcode.$dirty">
+                                <small class="text-danger" ng-show="EditForm.Mrcode.$invalid">Invalid Personal ID</small>
                             </div>
                         </div>
 
@@ -73,7 +73,7 @@
                         <div class="col-sm-6">
                             <input type="text" name="Fname" maxlenght="50" class="form-control" ng-model="mentor.mR_Fname" required>
                             <div class="m-t-xs" ng-show="AddForm.Fname.$dirty">
-                                <small class="text-danger" ng-show="AddForm.Fname.$error.required">Please input firstname</small>
+                                <small class="text-danger" ng-show="EditForm.Fname.$error.required">Please input firstname</small>
                             </div>
                         </div>
                     </div>
@@ -92,7 +92,7 @@
                         <div class="col-sm-6">
                             <input type="text" maxlenght="50" name="Lname" class="form-control" ng-model="mentor.mR_Lname" required>
                             <div class="m-t-xs" ng-show="AddForm.Lname.$dirty">
-                                <small class="text-danger" ng-show="AddForm.Fname.$error.required">Please input lastname</small>
+                                <small class="text-danger" ng-show="EditForm.Fname.$error.required">Please input lastname</small>
                             </div>
                         </div>
                     </div>
@@ -122,8 +122,8 @@
 
                         <div class="col-sm-6">
                             <input type="number" maxlength="15" name="hometel" class="form-control" ng-model="mentor.mR_HomeTel">
-                            <div class="m-t-xs" ng-show="AddForm.hometel.$invalid && AddForm.hometel.$dirty">
-                                <small class="text-danger" ng-show="AddForm.mobile.$invalid">Please input number only</small>
+                            <div class="m-t-xs" ng-show="EditForm.hometel.$invalid && EditForm.hometel.$dirty">
+                                <small class="text-danger" ng-show="EditForm.mobile.$invalid">Please input number only</small>
                             </div>
 
                         </div>
@@ -134,7 +134,7 @@
 
                         <div class="col-sm-6">
                             <input type="number" maxlength="13" name="mobile" class="form-control" ng-model="mentor.mR_mobile">
-                            <div class="m-t-xs" ng-show="AddForm.mobile.$invalid && AddForm.mobile.$dirty">
+                            <div class="m-t-xs" ng-show="EditForm.mobile.$invalid && EditForm.mobile.$dirty">
                                 <small class="text-danger" ng-show="AddForm.mobile.$invalid">Please input number only</small>
                             </div>
                         </div>
@@ -145,8 +145,8 @@
 
                         <div class="col-sm-6">
                             <input type="email" maxlength="50" name="email" class="form-control" ng-model="mentor.mR_Email">
-                            <div class="m-t-xs" ng-show="AddForm.email.$invalid && AddForm.email.$dirty">
-                                <small class="text-danger" ng-show="AddForm.email.$error">Please input a valid email address</small>
+                            <div class="m-t-xs" ng-show="EditForm.email.$invalid && EditForm.email.$dirty">
+                                <small class="text-danger" ng-show="EditForm.email.$error">Please input a valid email address</small>
                             </div>
                         </div>
                     </div>

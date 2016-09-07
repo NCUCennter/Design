@@ -19,7 +19,7 @@
         mR_Email: 'aton@outlook.co.th',
         mR_Date: '07-06-58 9:38',
         mR_Man: 'myboss',
-        mR_Del: 'TRUE'
+        mR_Use: 'TRUE'
     },
     {
         mR_ID: '2558002',
@@ -34,7 +34,7 @@
         mR_Email: 'a@a.com',
         mR_Date: '08-07-58 10:38',
         mR_Man: 'admin',
-        mR_Del: 'TRUE'
+        mR_Use: 'TRUE'
     },
 
         {
@@ -50,7 +50,7 @@
             mR_Email: 'b@b.com',
             mR_Date: '11-06-59 22:38',
             mR_Man: 'guest',
-            mR_Del: 'FALSE'
+            mR_Use: 'FALSE'
         }
     ];
 
@@ -88,12 +88,10 @@
         },
      function (isConfirm) {
          if (isConfirm) {
-             var Deleter = function(person){
-                 SweetAlert.swal("Deleted:", person.mR_ID, "success");
-                 $scope.mentor.splice($index, 1);
-             }, function (err) {
-                 SweetAlert.swal("Cannot Deleted activity", person.mR_ID + " is using ", "error");
-             })
+             SweetAlert.swal("Deleted:", person.mR_ID, "success");
+             $scope.mentor.splice($index, 1);
+         }
+
          else {
              SweetAlert.swal("Cancelled", "Your  data is safe :)", "error");
          }
